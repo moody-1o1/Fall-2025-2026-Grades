@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MUST – Grade Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --must-blue: #0b3c7a;
+      --must-green: #1aa34a;
+      --text-dark: #1f2937;
+      --border: #e5e7eb;
+      --bg-light: #f9fafb;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 3px solid var(--must-green);
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    .header img {
+      height: 80px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--must-blue);
+    }
+
+    .header p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    thead {
+      background: var(--must-blue);
+      color: white;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f3f4f6;
+    }
+
+    /* Summary */
+    .summary {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-radius: 8px;
+      background: #f0fdf4;
+      border: 2px solid var(--must-green);
+    }
+
+    .summary div {
+      font-size: 15px;
+    }
+
+    .cgpa {
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--must-blue);
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <!-- Put the logo file in the same folder and name it MUST-logo.png -->
+      <img src="MUST-logo.png" alt="MUST Logo">
+      <div>
+        <h1>Misr University for Science & Technology</h1>
+        <p>Grade Report – Undergraduate Program</p>
+      </div>
+    </div>
+
+    <!-- Grades Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Credit Hours</th>
+          <th>Score</th>
+          <th>Percentage</th>
+          <th>Grade Point</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PHY101</td>
+          <td>3</td>
+          <td>124 / 150</td>
+          <td>82.7%</td>
+          <td>3.30</td>
+        </tr>
+        <tr>
+          <td>CS101</td>
+          <td>3</td>
+          <td>116 / 150</td>
+          <td>77.3%</td>
+          <td>3.00</td>
+        </tr>
+        <tr>
+          <td>CS102</td>
+          <td>3</td>
+          <td>130 / 150</td>
+          <td>86.7%</td>
+          <td>3.70</td>
+        </tr>
+        <tr>
+          <td>MATH101</td>
+          <td>3</td>
+          <td>132 / 150</td>
+          <td>88.0%</td>
+          <td>3.70</td>
+        </tr>
+        <tr>
+          <td>UENG101</td>
+          <td>2</td>
+          <td>95 / 100</td>
+          <td>95.0%</td>
+          <td>4.00</td>
+        </tr>
+        <tr>
+          <td>UARAB101</td>
+          <td>2</td>
+          <td>88 / 100</td>
+          <td>88.0%</td>
+          <td>3.70</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Summary -->
+    <div class="summary">
+      <div><strong>Total Credit Hours:</strong> 16</div>
+      <div><strong>CGPA (4.0 Scale):</strong></div>
+      <div class="cgpa">3.67</div>
+    </div>
+
+    <div class="footer">
+      This document is a grade summary styled for academic presentation.
+    </div>
+
+  </div>
+
+</body>
+</html>
