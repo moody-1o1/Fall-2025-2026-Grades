@@ -1,208 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MUST – Grade Report</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>MUSTER</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    :root {
-      --must-blue: #0b3c7a;
-      --must-green: #1aa34a;
-      --text-dark: #1f2937;
-      --border: #e5e7eb;
-      --bg-light: #f9fafb;
-    }
+<style>
+:root {
+  --blue:#0b2f66;
+  --green:#16a34a;
+  --gray:#e5e7eb;
+}
 
-    body {
-      margin: 0;
-      padding: 40px;
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--bg-light);
-      color: var(--text-dark);
-    }
+body {
+  margin:0;
+  font-family:system-ui, Arial, sans-serif;
+  background:#f3f4f6;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
+/* Top bar */
+.topbar {
+  background:var(--blue);
+  color:white;
+  padding:16px;
+  text-align:center;
+  font-size:20px;
+  font-weight:600;
+}
 
-    /* Header */
-    .header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      border-bottom: 3px solid var(--must-green);
-      padding-bottom: 15px;
-      margin-bottom: 25px;
-    }
+/* Card */
+.card {
+  background:white;
+  margin:16px;
+  border-radius:14px;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+  overflow:hidden;
+}
 
-    .header img {
-      height: 80px;
-    }
+/* Table */
+.header, .row {
+  display:grid;
+  grid-template-columns:1fr 80px 90px;
+  align-items:center;
+  padding:14px;
+}
 
-    .header h1 {
-      margin: 0;
-      font-size: 22px;
-      color: var(--must-blue);
-    }
+.header {
+  background:var(--blue);
+  color:white;
+  font-size:14px;
+}
 
-    .header p {
-      margin: 4px 0 0;
-      font-size: 14px;
-      color: #4b5563;
-    }
+.row {
+  border-bottom:1px solid var(--gray);
+}
 
-    /* Table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
+/* Grade circle */
+.grade {
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:4px solid var(--green);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  color:var(--green);
+}
 
-    thead {
-      background: var(--must-blue);
-      color: white;
-    }
+/* Button */
+button {
+  background:var(--green);
+  color:white;
+  border:none;
+  padding:8px;
+  border-radius:6px;
+  font-size:13px;
+  cursor:pointer;
+}
 
-    th, td {
-      padding: 12px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-      font-size: 14px;
-    }
+/* DETAILS VIEW */
+#details {
+  display:none;
+}
 
-    th:first-child,
-    td:first-child {
-      text-align: left;
-    }
+.back {
+  padding:14px;
+  cursor:pointer;
+  font-size:16px;
+}
 
-    tbody tr:nth-child(even) {
-      background: #f3f4f6;
-    }
+.circle {
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  border:14px solid var(--green);
+  margin:20px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  font-size:20px;
+}
 
-    /* Summary */
-    .summary {
-      margin-top: 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      border-radius: 8px;
-      background: #f0fdf4;
-      border: 2px solid var(--must-green);
-    }
+.boxes {
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  margin-top:20px;
+}
 
-    .summary div {
-      font-size: 15px;
-    }
-
-    .cgpa {
-      font-size: 28px;
-      font-weight: bold;
-      color: var(--must-blue);
-    }
-
-    .footer {
-      margin-top: 25px;
-      font-size: 12px;
-      color: #6b7280;
-      text-align: center;
-    }
-  </style>
+.box {
+  background:white;
+  padding:16px;
+  border-radius:12px;
+  width:120px;
+  box-shadow:0 4px 10px rgba(0,0,0,.1);
+  text-align:center;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="container">
+<div class="topbar">MUSTER</div>
 
-    <!-- Header -->
-   <div class="header">
-  <img src="MUST-logo.png" alt="MUST Logo">
-  <div>
-    <h1>Misr University for Science & Technology</h1>
-    <p>Grade Report – Fall 2025/2026</p>
+<!-- MAIN LIST -->
+<div id="list">
+  <div class="card">
+    <div class="header">
+      <div>Subject</div><div>Grade</div><div>Action</div>
+    </div>
 
-    <div style="margin-top:8px; font-size:14px;">
-      <strong>Faculty of Informoation Technology</strong><br> 
-      <strong>Student Name:</strong> Mohamed Sherief Mohamed Kamel Morsy<br>
-      <strong>Student ID:</strong> 200068479
-     
+    <div class="row">
+      <div>PHY101</div>
+      <div class="grade">B+</div>
+      <button onclick="openDetails('PHY101',3,82.7,24,30,100,120)">Details</button>
+    </div>
+
+    <div class="row">
+      <div>CS101</div>
+      <div class="grade">B</div>
+      <button onclick="openDetails('CS101',3,77.3,26,30,90,120)">Details</button>
+    </div>
+
+    <div class="row">
+      <div>CS102</div>
+      <div class="grade">A-</div>
+      <button onclick="openDetails('CS102',3,86.7,28,30,102,120)">Details</button>
+    </div>
+
+    <div class="row">
+      <div>MATH101</div>
+      <div class="grade">A-</div>
+      <button onclick="openDetails('MATH101',3,88,30,30,102,120)">Details</button>
+    </div>
+
+    <div class="row">
+      <div>UENG101</div>
+      <div class="grade">A</div>
+      <button onclick="openDetails('UENG101',2,95,20,20,75,80)">Details</button>
+    </div>
+
+    <div class="row">
+      <div>UARAB101</div>
+      <div class="grade">A-</div>
+      <button onclick="openDetails('UARAB101',2,88,18,20,70,80)">Details</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- DETAILS VIEW -->
+<div id="details">
+  <div class="back" onclick="goBack()">← Back</div>
+
+  <div class="card">
+    <h2 id="course" style="text-align:center;margin-bottom:4px"></h2>
+    <p id="hours" style="text-align:center;color:#555"></p>
+
+    <div class="circle">
+      <strong id="percent"></strong>
+      <span id="score"></span>
+    </div>
+
+    <div class="boxes">
+      <div class="box">
+        <strong>CW</strong><br>
+        <span id="cw"></span>
+      </div>
+      <div class="box">
+        <strong>FIN</strong><br>
+        <span id="fin"></span>
+      </div>
     </div>
   </div>
 </div>
 
+<script>
+function openDetails(name, hrs, percent, cw, cwMax, fin, finMax) {
+  document.getElementById('list').style.display = 'none';
+  document.getElementById('details').style.display = 'block';
 
-    <!-- Grades Table -->
-    <table>
-      <thead>
-        <tr>
-          <th>Course</th>
-          <th>Credit Hours</th>
-          <th>Score</th>
-          <th>Percentage</th>
-          <th>Grade Point</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>PHY101</td>
-          <td>3</td>
-          <td>124 / 150</td>
-          <td>82.7%</td>
-          <td>3.30</td>
-        </tr>
-        <tr>
-          <td>CS101</td>
-          <td>3</td>
-          <td>116 / 150</td>
-          <td>77.3%</td>
-          <td>3.00</td>
-        </tr>
-        <tr>
-          <td>CS102</td>
-          <td>3</td>
-          <td>130 / 150</td>
-          <td>86.7%</td>
-          <td>3.70</td>
-        </tr>
-        <tr>
-          <td>MATH101</td>
-          <td>3</td>
-          <td>132 / 150</td>
-          <td>88.0%</td>
-          <td>3.70</td>
-        </tr>
-        <tr>
-          <td>UENG101</td>
-          <td>2</td>
-          <td>95 / 100</td>
-          <td>95.0%</td>
-          <td>4.00</td>
-        </tr>
-        <tr>
-          <td>UARAB101</td>
-          <td>2</td>
-          <td>88 / 100</td>
-          <td>88.0%</td>
-          <td>3.70</td>
-        </tr>
-      </tbody>
-    </table>
+  document.getElementById('course').textContent = name;
+  document.getElementById('hours').textContent = hrs + " HRS";
+  document.getElementById('percent').textContent = percent + "%";
+  document.getElementById('score').textContent = Math.round(percent) + "/100";
+  document.getElementById('cw').textContent = cw + "/" + cwMax;
+  document.getElementById('fin').textContent = fin + "/" + finMax;
+}
 
-    <!-- Summary -->
-    <div class="summary">
-      <div><strong>Total Credit Hours:</strong> 16</div>
-      <div><strong>CGPA (4.0 Scale):</strong></div>
-      <div class="cgpa">3.67</div>
-    </div>
-
-    
-
-  </div>
+function goBack() {
+  document.getElementById('details').style.display = 'none';
+  document.getElementById('list').style.display = 'block';
+}
+</script>
 
 </body>
 </html>
+
