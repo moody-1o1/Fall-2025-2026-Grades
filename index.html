@@ -2,121 +2,145 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>MUSTER</title>
+<title>MUSTER – Grade Report</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 :root {
-  --blue:#0b2f66;
-  --green:#16a34a;
-  --gray:#e5e7eb;
+  --blue: #0b2f66;
+  --green: #16a34a;
+  --gray: #e5e7eb;
 }
 
 body {
-  margin:0;
-  font-family:system-ui, Arial, sans-serif;
-  background:#f3f4f6;
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #f3f4f6;
 }
 
-/* Top bar */
+/* Top Bar */
 .topbar {
-  background:var(--blue);
-  color:white;
-  padding:16px;
-  text-align:center;
-  font-size:20px;
-  font-weight:600;
+  background: var(--blue);
+  color: white;
+  padding: 16px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Student Info */
+.student {
+  background: white;
+  margin: 16px;
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  text-align: center;
+}
+
+.student h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.student p {
+  margin: 4px 0;
+  color: #374151;
+  font-size: 14px;
 }
 
 /* Card */
 .card {
-  background:white;
-  margin:16px;
-  border-radius:14px;
-  box-shadow:0 4px 12px rgba(0,0,0,.1);
-  overflow:hidden;
+  background: white;
+  margin: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  overflow: hidden;
 }
 
-/* Table */
-.header, .row {
-  display:grid;
-  grid-template-columns:1fr 80px 90px;
-  align-items:center;
-  padding:14px;
+.table-header,
+.row {
+  display: grid;
+  grid-template-columns: 1fr 80px 90px;
+  align-items: center;
+  padding: 12px;
 }
 
-.header {
-  background:var(--blue);
-  color:white;
-  font-size:14px;
+.table-header {
+  background: var(--blue);
+  color: white;
+  font-size: 14px;
 }
 
 .row {
-  border-bottom:1px solid var(--gray);
+  border-bottom: 1px solid var(--gray);
 }
 
-/* Grade circle */
+/* Grade Circle */
 .grade {
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  border:4px solid var(--green);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
-  color:var(--green);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 4px solid var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--green);
 }
 
 /* Button */
-button {
-  background:var(--green);
-  color:white;
-  border:none;
-  padding:8px;
-  border-radius:6px;
-  font-size:13px;
-  cursor:pointer;
+.btn {
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
 }
 
-/* DETAILS VIEW */
+/* Details View */
 #details {
-  display:none;
-}
-
-.back {
-  padding:14px;
-  cursor:pointer;
-  font-size:16px;
+  display: none;
+  margin: 16px;
 }
 
 .circle {
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  border:14px solid var(--green);
-  margin:20px auto;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  font-size:20px;
+  width: 180px;
+  height: 180px;
+  border: 10px solid var(--green);
+  border-radius: 50%;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
 }
 
-.boxes {
-  display:flex;
-  gap:14px;
-  justify-content:center;
-  margin-top:20px;
+.splits {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
 }
 
 .box {
-  background:white;
-  padding:16px;
-  border-radius:12px;
-  width:120px;
-  box-shadow:0 4px 10px rgba(0,0,0,.1);
-  text-align:center;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  width: 110px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* GPA */
+.gpa {
+  text-align: center;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 700;
 }
 </style>
 </head>
@@ -125,89 +149,97 @@ button {
 
 <div class="topbar">MUSTER</div>
 
-<!-- MAIN LIST -->
-<div id="list">
-  <div class="card">
-    <div class="header">
-      <div>Subject</div><div>Grade</div><div>Action</div>
-    </div>
+<div class="student">
+  <h2>Mohamed Sherif Mohamed Kamel</h2>
+  <p>Student ID: 200068479</p>
+  <p>Fall 2025–2026</p>
+</div>
 
-    <div class="row">
-      <div>PHY101</div>
-      <div class="grade">B+</div>
-      <button onclick="openDetails('PHY101',3,82.7,24,30,100,120)">Details</button>
-    </div>
+<!-- SUBJECT LIST -->
+<div id="list" class="card">
+  <div class="table-header">
+    <div>Subject</div>
+    <div>Grade</div>
+    <div>Action</div>
+  </div>
 
-    <div class="row">
-      <div>CS101</div>
-      <div class="grade">B</div>
-      <button onclick="openDetails('CS101',3,77.3,26,30,90,120)">Details</button>
-    </div>
+  <div class="row">
+    <div>CS101</div>
+    <div class="grade">77%</div>
+    <button class="btn" onclick="showDetails('CS101',3,77,'24 / 30','26 / 30','65 / 90')">Details</button>
+  </div>
 
-    <div class="row">
-      <div>CS102</div>
-      <div class="grade">A-</div>
-      <button onclick="openDetails('CS102',3,86.7,28,30,102,120)">Details</button>
-    </div>
+  <div class="row">
+    <div>CS102</div>
+    <div class="grade">79%</div>
+    <button class="btn" onclick="showDetails('CS102',3,79,'27 / 30','23 / 30','69 / 90')">Details</button>
+  </div>
 
-    <div class="row">
-      <div>MATH101</div>
-      <div class="grade">A-</div>
-      <button onclick="openDetails('MATH101',3,88,30,30,102,120)">Details</button>
-    </div>
+  <div class="row">
+    <div>PHY101</div>
+    <div class="grade">72%</div>
+    <button class="btn" onclick="showDetails('PHY101',3,72,'20 / 30','21 / 30','67 / 90')">Details</button>
+  </div>
 
-    <div class="row">
-      <div>UENG101</div>
-      <div class="grade">A</div>
-      <button onclick="openDetails('UENG101',2,95,20,20,75,80)">Details</button>
-    </div>
+  <div class="row">
+    <div>MATH101</div>
+    <div class="grade">88%</div>
+    <button class="btn" onclick="showDetails('MATH101',3,88,'30 / 30','24 / 30','78 / 90')">Details</button>
+  </div>
 
-    <div class="row">
-      <div>UARAB101</div>
-      <div class="grade">A-</div>
-      <button onclick="openDetails('UARAB101',2,88,18,20,70,80)">Details</button>
-    </div>
+  <div class="row">
+    <div>UENG101</div>
+    <div class="grade">95%</div>
+    <button class="btn" onclick="showDetails('UENG101',2,95,'19 / 20','18 / 20','58 / 60')">Details</button>
+  </div>
 
+  <div class="row">
+    <div>UARAB101</div>
+    <div class="grade">85%</div>
+    <button class="btn" onclick="showDetails('UARAB101',2,85,'17 / 20','18 / 20','50 / 60')">Details</button>
+  </div>
+
+  <div class="row">
+    <div>UCOMP101</div>
+    <div class="grade">91%</div>
+    <button class="btn" onclick="showDetails('UCOMP101',2,91,'18 / 20','19 / 20','54 / 60')">Details</button>
+  </div>
+
+  <div class="gpa">
+    GPA: <strong>3.31 / 4.00</strong>
   </div>
 </div>
 
 <!-- DETAILS VIEW -->
-<div id="details">
-  <div class="back" onclick="goBack()">← Back</div>
+<div id="details" class="card">
+  <button class="btn" onclick="goBack()">← Back</button>
 
-  <div class="card">
-    <h2 id="course" style="text-align:center;margin-bottom:4px"></h2>
-    <p id="hours" style="text-align:center;color:#555"></p>
+  <h3 id="course"></h3>
+  <p id="hours"></p>
 
-    <div class="circle">
-      <strong id="percent"></strong>
-      <span id="score"></span>
-    </div>
+  <div class="circle">
+    <span id="percent"></span>
+  </div>
 
-    <div class="boxes">
-      <div class="box">
-        <strong>CW</strong><br>
-        <span id="cw"></span>
-      </div>
-      <div class="box">
-        <strong>FIN</strong><br>
-        <span id="fin"></span>
-      </div>
-    </div>
+  <div class="splits">
+    <div class="box" id="q1"></div>
+    <div class="box" id="q2"></div>
+    <div class="box" id="fin"></div>
   </div>
 </div>
 
 <script>
-function openDetails(name, hrs, percent, cw, cwMax, fin, finMax) {
+function showDetails(name, hrs, percent, q1, q2, fin) {
   document.getElementById('list').style.display = 'none';
   document.getElementById('details').style.display = 'block';
 
   document.getElementById('course').textContent = name;
-  document.getElementById('hours').textContent = hrs + " HRS";
+  document.getElementById('hours').textContent = hrs + " Credit Hours";
   document.getElementById('percent').textContent = percent + "%";
-  document.getElementById('score').textContent = Math.round(percent) + "/100";
-  document.getElementById('cw').textContent = cw + "/" + cwMax;
-  document.getElementById('fin').textContent = fin + "/" + finMax;
+
+  document.getElementById('q1').textContent = "Quiz 1\n" + q1;
+  document.getElementById('q2').textContent = "Quiz 2\n" + q2;
+  document.getElementById('fin').textContent = "Final\n" + fin;
 }
 
 function goBack() {
@@ -218,4 +250,3 @@ function goBack() {
 
 </body>
 </html>
-
